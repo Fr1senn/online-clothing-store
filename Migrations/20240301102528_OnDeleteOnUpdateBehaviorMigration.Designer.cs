@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineClothingStore.Models;
@@ -11,9 +12,11 @@ using OnlineClothingStore.Models;
 namespace OnlineClothingStore.Migrations
 {
     [DbContext(typeof(OnlineClothingStoreContext))]
-    partial class OnlineClothingStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240301102528_OnDeleteOnUpdateBehaviorMigration")]
+    partial class OnDeleteOnUpdateBehaviorMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
