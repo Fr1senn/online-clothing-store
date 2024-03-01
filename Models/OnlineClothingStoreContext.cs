@@ -130,6 +130,9 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.PriceAtOrder)
+                .HasPrecision(7, 2)
+                .HasColumnName("price_at_order");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
             entity.Property(e => e.Quantity)
                 .HasDefaultValue(1)
