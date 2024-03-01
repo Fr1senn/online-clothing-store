@@ -13,7 +13,7 @@ public partial class Discount
 
     public DateOnly EndDate { get; set; }
 
-    public bool IsAcitive { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

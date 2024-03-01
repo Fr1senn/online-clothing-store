@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace OnlineClothingStore.Models;
 
@@ -77,9 +76,9 @@ public partial class OnlineClothingStoreContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.BeginDate).HasColumnName("begin_date");
             entity.Property(e => e.EndDate).HasColumnName("end_date");
-            entity.Property(e => e.IsAcitive)
+            entity.Property(e => e.IsActive)
                 .HasDefaultValue(false)
-                .HasColumnName("is_acitive");
+                .HasColumnName("is_active");
             entity.Property(e => e.Percentage).HasColumnName("percentage");
         });
 
