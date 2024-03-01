@@ -189,9 +189,9 @@ public partial class OnlineClothingStoreContext : DbContext
             entity.ToTable("reviews");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Comment).HasColumnName("comment");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
             entity.Property(e => e.Rating).HasColumnName("rating");
-            entity.Property(e => e.Review1).HasColumnName("review");
             entity.Property(e => e.ReviewDate)
                 .HasDefaultValueSql("CURRENT_DATE")
                 .HasColumnName("review_date");
