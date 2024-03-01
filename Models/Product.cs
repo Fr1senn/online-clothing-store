@@ -13,17 +13,17 @@ public partial class Product
 
     public int? Rating { get; set; }
 
-    public int ManufacturerId { get; set; }
+    public int? ManufacturerId { get; set; }
 
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
-    public int DiscountId { get; set; }
+    public int? DiscountId { get; set; }
 
-    public virtual Category Category { get; set; } = null!;
+    public virtual Category? Category { get; set; }
 
-    public virtual Discount Discount { get; set; } = null!;
+    public virtual Discount? Discount { get; set; }
 
-    public virtual Manufacturer Manufacturer { get; set; } = null!;
+    public virtual Manufacturer? Manufacturer { get; set; }
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 

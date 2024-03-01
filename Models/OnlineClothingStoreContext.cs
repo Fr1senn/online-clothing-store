@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace OnlineClothingStore.Models;
 
@@ -106,7 +107,9 @@ public partial class OnlineClothingStoreContext : DbContext
             entity.Property(e => e.OrderDate)
                 .HasDefaultValueSql("CURRENT_DATE")
                 .HasColumnName("order_date");
-            entity.Property(e => e.StatusId).HasColumnName("status_id");
+            entity.Property(e => e.StatusId)
+                .HasDefaultValue(1)
+                .HasColumnName("status_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Orders)
@@ -116,7 +119,7 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("orders_user_id_fkey");
         });
 
@@ -135,12 +138,11 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("order_items_order_id_fkey");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("order_items_product_id_fkey");
         });
 
@@ -164,17 +166,17 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("products_category_id_fkey");
 
             entity.HasOne(d => d.Discount).WithMany(p => p.Products)
                 .HasForeignKey(d => d.DiscountId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("products_discount_id_fkey");
 
             entity.HasOne(d => d.Manufacturer).WithMany(p => p.Products)
                 .HasForeignKey(d => d.ManufacturerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("products_manufacturer_id_fkey");
         });
 
@@ -195,12 +197,12 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("reviews_product_id_fkey");
 
             entity.HasOne(d => d.User).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("reviews_user_id_fkey");
         });
 
@@ -260,7 +262,9 @@ public partial class OnlineClothingStoreContext : DbContext
             entity.Property(e => e.RegistrationDate)
                 .HasDefaultValueSql("CURRENT_DATE")
                 .HasColumnName("registration_date");
-            entity.Property(e => e.RoleId).HasColumnName("role_id");
+            entity.Property(e => e.RoleId)
+                .HasDefaultValue(1)
+                .HasColumnName("role_id");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
@@ -280,12 +284,12 @@ public partial class OnlineClothingStoreContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.WishLists)
                 .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("wish_list_product_id_fkey");
 
             entity.HasOne(d => d.User).WithMany(p => p.WishLists)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("wish_list_user_id_fkey");
         });
 
